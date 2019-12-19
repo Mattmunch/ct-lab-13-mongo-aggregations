@@ -5,3 +5,4 @@ const { seedData } = require('./lib/utils/seed-data');
 seedData()
   .then(() => console.log('done'))
   .finally(() => mongoose.connection.close());
+//node --max-old-space-size=8192<<< To prevent heap issue
