@@ -62,5 +62,20 @@ describe('app routes', () => {
         });
       });
   });
+  it('can update a crash', () => {
+    return request(app)
+      .patch(`/api/v1/crashes/${crash.id}`)
+      .send({ eventDescriptor: 'Gorilla' })
+      .then(res => {
+        expect(res.body).toEqual({
+          _id: crash.id,
+          eventDescriptor:'Gorilla',
+          crashDescriptor:'Things happened',
+          lightingCondition:'Broad Daylight',
+          numberOfVehiclesInvolved: 99,
+          __v:0
+        })
+      });
+  });
 
 });
